@@ -1,6 +1,7 @@
-TODO: Add more to the title of your project here
+Simranjeet Kaur
+Genomics
 
-# AdvancedR3:
+# AdvancedR3: 
 
 TODO: Give a brief description of what your project is about
 
