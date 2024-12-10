@@ -44,12 +44,35 @@ styler::style_dir()
 #style the markdown files \# at project level
 
 #Go to tools, project options , R markdown: canonical visual: true,
-text; wrapping:column, ok
+#text; wrapping:column, ok
 
 # open learning R file doc:learning,qmd
 
 #Add soemthing to the the learning,qmd file and save, it will
-automatically insert proper spacing
+#automatically insert proper spacing
 
 # Open up the README.md file and do all the TODO items found inside the file as well as inside the TODO.md file. Save often and watch as the Markdown gets reformatted.
 
+#6. creating automated pipelines
+
+# Targets: Using targets to manage a pipeline
+
+Target allows you to explicitly specify the outputs you want to create.
+targets will then track them for you and know which output depends on
+which as well as which ones need to be updated when you make changes to
+your pipeline.
+
+#Pipeline A pipeline can be any process where the steps between a start
+and an end point are very clear, explicit, and concrete. These highly
+distinct steps can be manual, human involved, or completely automated by
+a robot or computer.
+
+# 1. function based workflow: target uses this, and an powerful way to make workflows
+
+# 2. script based workflow: old fashioned
+
+use_package("targets")
+
+# add targets to our project
+
+targets::use_targets() \# creates a file called targets.R
