@@ -22,3 +22,14 @@ usethis::use_usethis()
 use_package("gitcreds", "suggests")
 
 usethis::use_github()
+
+
+# Use package styler as a workflow dependency
+
+use_package("styler", "suggests")
+
+# style the file we’re currently working on using the “style active file” RStudio addin. We use that through the Command Palette (Ctrl-Shift-P) and typing “style file”, which should show the “Style active file” option. This is what we will do frequently throughout the course.
+
+styler:::style_active_file()
+
+
