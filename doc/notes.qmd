@@ -130,3 +130,12 @@ we have 3 levels in the description file
 
 because they are metapackages they issue a warning without the above
 
+# Open doc/learning.qmd
+
+Tip: don't do giant commits, do commits often even the small commits
+
+Create 3 outputs 1. descriptive statistics (table1) 2. plots 3. Manus
+
+Make the function in learning.qmd, take it to functions.R file then
+eventually move it to the targets file
+
