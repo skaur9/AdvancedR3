@@ -5,7 +5,7 @@ Simranjeet Kaur Multi-omics
 This project is about learning Advanced R using styler, Quarto,
 automated use of packages loading and installation via usethis package
 and to create a better visual structure of an R project. And finally
-comitting the changes to github
+commit and push the changes to github
 
 # Brief description of folder and file contents
 
@@ -16,7 +16,7 @@ The following folders contain:
 
 -   `data/`:
 -   `doc/`:
--   'data_raw/':
+-   `data_raw/`:
 -   `R/`:
 
 # Installing project R package dependencies
