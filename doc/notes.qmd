@@ -41,7 +41,7 @@ styler::style_dir()
 
 #qmd and python works together. Qaurto is better than Rmd
 
-#style the markdown files \# at project level
+#style the markdown files at project level
 
 #Go to tools, project options , R markdown: canonical visual: true,
 #text; wrapping:column, ok
@@ -76,3 +76,57 @@ use_package("targets")
 # add targets to our project
 
 targets::use_targets() \# creates a file called targets.R
+
+Mostly, the_targets.R script contains comments and a basic set up to get
+you started. But, notice the tar_target() function used at the end of
+the script. There are two main arguments for it: name and command. The
+way that targets works is similar to how you’d assign the output of a
+function to an object, so:
+
+object_name \<- function_in_command(input_arguments)
+
+#Is the same as:
+
+tar_target(name = object_name, command =
+function_in_command(input_arguments) )
+
+What this means is that targets follows a “function-oriented” workflow,
+not a “script-based” workflow. What’s the difference? In a
+script-oriented workflow, each R file/script is run in a specific order.
+As a result, you might end up with an R file that has code like:
+
+source("R/1-process-data.R") source("R/2-basic-statistics.R")
+source("R/3-create-plots.R") source("R/4-linear-regression.R")
+
+#While in a function-oriented workflow, it might look more like:
+
+source("R/functions.R") raw_data\<- load_raw_data("file/path/data.csv")
+processed_data\<- process_data(raw_data)
+basic_stats\<-calculate_basic_statistics(processed_data)
+simple_plot\<-create_plot(processed_data)
+model_results\<-run_linear_reg(processed_data)
+
+With the function-oriented workflow, each function takes an input and
+contains all the code to create one result as its output. This could be,
+for instance, a figure in a paper.
+
+# To load tidyverse and tidymodels
+
+use_package("tidyverse", "depends")
+
+we have 3 levels in the description file
+
+-   
+
+    1.  imports
+
+-   
+
+    2.  suggests
+
+-   
+
+    3.  depends
+
+because they are metapackages they issue a warning without the above
+
