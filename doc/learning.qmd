@@ -13,4 +13,31 @@ lipidomics <- read_csv(here::here("data/lipidomics.csv"))
 
 ## Basic statistics
 
+```{r}
 descriptive_stats(lipidomics)
+```
+
+## Figure outputs
+
+```{r}
+ggplot(lipidomics, aes(x = value)) +
+  geom_histogram() +
+  facet_wrap(vars(metabolite), scales = "free")
+```
+
+## Convert the plot into a function
+
+```{r}
+#' Title Create Plots
+#'
+#' @param data Lipidomics dataset
+#'
+#' @return Histograms of metabolites
+#'
+plot_distributions <- function(data) {
+    data %>%
+        ggplot2::ggplot(ggplot2::aes(x = value)) +
+        ggplot2::geom_histogram() +
+        ggplot2::facet_wrap(ggplot2::vars(metabolite), scales = "free")
+        }
+```
