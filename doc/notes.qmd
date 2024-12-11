@@ -359,3 +359,16 @@ targets::tar_visnetwork()
 targets::tar_make()
 
 ```
+
+### Working with Tidymodels
+
+Add tidymodels
+
+```{r}
+use_package("tidymodels", "depends") 
+use_package("workflows")
+use_package("recipes")
+use_package("parsnip")
+```
+
+# update learning.qmd file
