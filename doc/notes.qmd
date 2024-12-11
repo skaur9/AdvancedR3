@@ -337,3 +337,6 @@ tar_read(fig_metabolite_distribution)
 ```{r}
 targets::tar_make()
 ```
+
+#change the path of target.yaml file or ignore that file to upload to
+github
