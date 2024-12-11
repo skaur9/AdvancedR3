@@ -340,3 +340,22 @@ targets::tar_make()
 
 #change the path of target.yaml file or ignore that file to upload to
 github
+
+```{r}
+use_git_ignore("_targets.yaml")
+```
+
+# in the leaning.qmd file, make the table pretty by listing mean and sd values together
+
+```{r}
+tar_read(df_stats_by_metabolite) |>
+    mutate(MeanSD = glue::glue("{value_mean} ({value_sd})")) |>
+    select(Metabolite = metabolite, `Mean (SD)` = MeanSD) |>
+    knitr::kable(caption = "Descriptive Statistics of the Metabolites")
+```
+
+```{r}
+targets::tar_visnetwork()
+targets::tar_make()
+
+```
