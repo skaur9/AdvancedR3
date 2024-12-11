@@ -1,6 +1,6 @@
-#' Title "Decriptive statistics"
+#' Title "Descriptive statistics"
 #'
-#' @param data
+#' @param data Lipidomics dataset
 #'
 #' @return  “A data.frame/tibble.”
 #'
