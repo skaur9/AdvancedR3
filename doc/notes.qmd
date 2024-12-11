@@ -313,3 +313,27 @@ library(quarto)
 targets::tar_make()
 targets::tar_visnetwork()
 ```
+
+# Connect quarto_doc and learning.qmd
+
+# read the targets package and read the data file from targets file
+
+```{r setup}
+targets::tar_config_set(store = here::here("_targets"))
+library(tidyverse)
+library(targets)
+source(here::here("R/functions.R"))
+lipidomics = tar_read(lipidomics)
+
+## Results
+
+tar_read(df_stats_by_metabolite)
+
+tar_read(fig_metabolite_distribution)
+```
+
+# make target
+
+```{r}
+targets::tar_make()
+```
