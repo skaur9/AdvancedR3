@@ -794,3 +794,123 @@ calculate_estimates <- function(data) {
 }
 
 ```
+
+## Now add this to the targets file
+
+```{r}
+
+#append the following in the list()
+
+  tar_target(
+    name = df_model_estimates,
+    command = calculate_estimates(lipidomics)
+  )
+
+# make and visualize targets
+targets::tar_make() 
+targets::tar_visnetwork()
+```
+
+## Update the leaning.qmd file to read the model from target file
+
+SO replace the follwoing
+
+## Running multiple models
+
+```{r}
+model_estimates <- lipidomics |>
+calculate_estimates()
+
+model_estimates
+```
+
+with
+
+```{r}
+model_estimates <- tar_read(df_model_estimates)
+
+
+# make and visualize targets
+targets::tar_make() 
+
+```
+
+## Visualizing the model estimates
+
+```{r}
+plot_estimates <- model_estimates |>
+    ggplot(aes(
+    x = estimate,
+    y = metabolite, 
+    xmin = estimate - std.error,
+    xmax = estimate + std.error)
+) + 
+geom_pointrange()
+
+plot_estimates
+```
+
+```{r}
+plot_estimates <- model_estimates |>
+    ggplot(aes(
+    x = estimate,
+    y = metabolite, 
+    xmin = estimate - std.error,
+    xmax = estimate + std.error)
+) + 
+geom_pointrange() + 
+coord_fixed(xlim = c(0,5))
+
+plot_estimates
+```
+
+## convert this plot code into a function and add it as a target in the pipeline.
+
+# Add the following in the functions.R file
+
+```{r}
+#' Plot the estimates and standard errors of the model results.
+#'
+#' @param results The model estimate results.
+#'
+#' @return A ggplot2 figure.
+#'
+plot_estimates <- function(results) {
+  results |>
+    ggplot2::ggplot(ggplot2::aes(
+      x = estimate, y = metabolite,
+      xmin = estimate - std.error,
+      xmax = estimate + std.error
+    )) +
+    ggplot2::geom_pointrange() +
+    ggplot2::coord_fixed(xlim = c(0, 5))
+}
+```
+
+# Add the follwoing in the targets file
+
+```{r}
+  tar_target(
+      name = fig_model_estimates,
+      command = plot_estimates(df_model_estimates)
+  )
+```
+
+# in the learning.qmd file add,
+
+```{r}
+tar_read(fig_model_estimates)
+
+```
+
+## Fianlly
+
+```{r}
+
+
+# make and visualize targets
+targets::tar_make() 
+targets::tar_visnetwork()
+```
+
+\`\`\`

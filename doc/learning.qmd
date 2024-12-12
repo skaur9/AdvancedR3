@@ -28,12 +28,16 @@ tar_read(fig_metabolite_distribution)
 
 ## Building the model
 
+#remove chunk
+
 ```{r}
 log_reg_specs <- logistic_reg() |>
   set_engine("glm")
 
 log_reg_specs
 ```
+
+#Keep
 
 ```{r}
 lipidomics_wide <- lipidomics |>
@@ -42,11 +46,15 @@ lipidomics_wide <- lipidomics |>
 lipidomics_wide
 ```
 
+#remove chunk
+
 ```{r}
 recipe_specs <- lipidomics_wide |>
   create_recipe_spec(metabolite_cholesterol)
 recipe_specs
 ```
+
+#remove chunk
 
 ```{r}
 workflow() |>
@@ -54,27 +62,14 @@ workflow() |>
   add_recipe(recipe_specs)
 ```
 
-```
-
 ## Running multiple models
 
 ```{r}
-model_estimates <- lipidomics |>
-calculate_estimates()
-
-model_estimates
+model_estimates <- tar_read(df_model_estimates)
 ```
 
-## Fixing metabolote names
+## Visualizing the model estimates
 
 ```{r}
-lipidomics |>
-    select(metabolite) |>
-    mutate(term = metabolite) |>
-    column_values_to_snake_case(term) |>
-    mutate(term = str_c("metabolite_", term)) |>
-    distinct(metabolite, term) |>
-    right_join(model_estimates, by = "term")
-    
+tar_read(fig_model_estimates)
 ```
-
