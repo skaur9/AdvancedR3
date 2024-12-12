@@ -1,9 +1,14 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
-.Random.seed|object|cbe7a456f13f8c3e|||||||||||||||
+.Random.seed|object|df12562b1c240a66|||||||||||||||
+column_values_to_snake_case|function|0b1d18d3f24a5435|||||||||||||||
+create_model_workflow|function|5543b567de56ef74|||||||||||||||
+create_recipe_spec|function|2ac1a3bc952df1db|||||||||||||||
 descriptive_stats|function|d03ca9bda00f4885|||||||||||||||
 df_stats_by_metabolite|stem|8b6144c2877ce605|ce15a181d02b2e03|b1308a4b5b7a9d40|519715527||t20068.3473491639s|a2f85ca40321daf5|403|rds|local|vector|||0.13||
 fig_metabolite_distribution|stem|ef86e9f493b213ac|86673d84fb1f96ff|b122b6742348c2ca|1599393873||t20068.3878594316s|93578a70b51a7747|143092|rds|local|vector|||0.16||
 file|stem|f6bf5a5688fb274f|09442fac263aded2|2c530c1562a7fbd1|1735323524|data/lipidomics.csv|t20059.5219451496s|2ec1867e6b7db575|24313|file|local|vector|||0.02|package tibble was built under R version 4.3.3|
 lipidomics|stem|58a989b06f163550|0adf46d83f39a429|f0e124423009cc2f|-1498393010||t20068.3562097012s|5efea0df906539e6|4884|rds|local|vector|||0.29||
+metabolites_to_wider|function|23dc6d48e297076d|||||||||||||||
 plot_distributions|function|dae90d29789803c1|||||||||||||||
-quarto_doc|stem|e0594af9a397497f|388f14abd14602e7|ae580e3959845176|1582462002|doc/learning.html*doc/learning.qmd|t20068.4260825134s|f282969651f60c63|27247|file|local|vector|||9.44||
+quarto_doc|stem|e0594af9a397497f|388f14abd14602e7|ae580e3959845176|1582462002|doc/learning.html*doc/learning.qmd|t20068.4260825134s||27247|file|local|vector|||8.84||Error running quarto cli.ℹ Rerun with quiet  FALSE to see the full error message.Caused by error System command quarto.exe failed
+tidy_model_output|function|99603693ad824aa7|||||||||||||||

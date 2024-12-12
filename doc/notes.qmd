@@ -629,3 +629,24 @@ fitted_model |>
   tidy_model_output()
 
 ```
+
+########### Functions and Functional
+
+In the console use_package("purrr")
+
+## Running multiple models
+
+```{r}
+lipidomics |>
+    column_values_to_snake_case(metabolite)
+```
+
+# split the data based on metabolite
+
+```{r}
+lipidomics |>
+  column_values_to_snake_case(metabolite) |>
+  group_split(metabolite) |>
+    map(metabolites_to_wider)
+```
+
