@@ -136,3 +136,25 @@ generate_model_results <- function(data) {
     parsnip::fit(data) |>
     tidy_model_output()
 }
+
+
+
+#' Calculate the estimates for the model for each metabolite
+#'
+#' @param data The lipidomics dataset
+#'
+#' @return A data frame
+calculate_estimates <- function(data) {
+  model_estimates <- data |>
+    split_by_metabolite() |>
+    purrr::map(generate_model_results) |>
+    purrr::list_rbind() |>
+    dplyr::filter(stringr::str_detect(term, "metabolite_"))
+
+  data |>
+    dplyr::mutate(term = metabolite) |>
+    column_values_to_snake_case(term) |>
+    dplyr::mutate(term = stringr::str_c("metabolite_", term)) |>
+    dplyr::distinct(term, metabolite) |>
+    dplyr::right_join(model_estimates, by = "term")
+}
